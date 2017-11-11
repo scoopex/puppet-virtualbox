@@ -51,7 +51,7 @@ class virtualbox::install (
 
         apt::source { 'virtualbox':
           location => 'http://download.virtualbox.org/virtualbox/debian',
-          release  => $::lsbdistcodename,
+          release  => 'yakkety',
           repos    => $apt_repos,
           require  => Apt::Key[ $apt_key_thumb ],
         }
