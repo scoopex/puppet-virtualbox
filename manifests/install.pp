@@ -45,12 +45,12 @@ class virtualbox::install (
         }
 
         apt::key { $apt_key_thumb:
-          ensure => present,
+          ensure     => present,
           key_source => $apt_key_source,
         }
 
-        if $::lsbdistcodename == "artful" {
-          $release = "zesty"
+        if $::lsbdistcodename == 'artful' {
+          $release = 'zesty'
         }else{
           $release = $::lsbdistcodename
         }
