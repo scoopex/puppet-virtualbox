@@ -49,6 +49,12 @@ class virtualbox::install (
           key_source => $apt_key_source,
         }
 
+        if $::lsbdistcodename == "artful" {
+          $release = "zesty"
+        }else{
+          $release = $::lsbdistcodename
+        }
+
         apt::source { 'virtualbox':
           location => 'http://download.virtualbox.org/virtualbox/debian',
           release  => $::lsbdistcodename,
