@@ -34,7 +34,7 @@ class virtualbox::install (
         }
 
         case $::lsbdistcodename {
-          /^(jessie|stretch|xenial)$/: {
+          /^(jessie|stretch|xenial|zesty|artful)$/: {
             $apt_key_thumb  = 'B9F8D658297AF3EFC18D5CDFA2F683C52980AECF'
             $apt_key_source = 'https://www.virtualbox.org/download/oracle_vbox_2016.asc'
           }
@@ -51,7 +51,7 @@ class virtualbox::install (
 
         apt::source { 'virtualbox':
           location => 'http://download.virtualbox.org/virtualbox/debian',
-          release  => 'yakkety',
+          release  => $::lsbdistcodename,
           repos    => $apt_repos,
           require  => Apt::Key[ $apt_key_thumb ],
         }
